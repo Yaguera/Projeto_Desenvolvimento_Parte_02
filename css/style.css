@@ -9,6 +9,7 @@ html, body {
     height: 100%;
     display: flex;
     flex-direction: column;
+    gap: 10px;
 }
 
 body {
@@ -46,11 +47,12 @@ a {
 }
 
 .section {
-    flex: 1;
-    display: flex; 
-    gap: 20px; 
-    padding: 20px;
-    margin-bottom: 100px;
+    display: flex;
+}
+
+input {
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .box {
@@ -71,7 +73,7 @@ a {
 }
 
 h1.box-content {
-  font-size: 42px;
+    font-size: 42px;
 }
 
 h2.box-content {
@@ -80,7 +82,7 @@ h2.box-content {
 
 p.box-content {
     font-size: 20px;
-  }
+}
 
 .box img {
     max-width: 100%;
@@ -126,120 +128,4 @@ footer {
 
 footer > p {
     padding: 20px 0; 
-}
-
-
-@media (max-width: 1024px) {
-    header {
-        margin-bottom: 30spx;
-    }
-
-    nav ul {
-        width: 85vw;
-        padding: 20px 0;
-    }
-
-    a {
-        font-size: 1.5em;
-    }
-
-    h1.box-content {
-        font-size: 28px;
-    }
-
-    h2.box-content {
-        font-size: 22px;
-    }
-
-    p.box-content {
-        font-size: 14px;
-    }
-
-    button {
-        margin-top: 10px;
-        font-size: 1em;
-    }
-
-    .section {
-        margin-bottom: 75px;
-    }
-   
-}
-
-@media (max-width: 768px) {
-    header {
-        margin-bottom: 50px;
-    }
-
-    a {
-        font-size: 1.2em;
-    }
-
-    main {
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    .box {
-        padding: 30px; 
-    }
-
-    .box1 {
-        padding-bottom: 10px; 
-    }
-
-    .box2 {
-        padding-top: 10px; 
-    }
-
-    button {
-        font-size: 1.2em;
-    }
-
-    .section {
-        margin-bottom: 50px;
-    }
-
-    footer {
-        padding: 10px;   
-    }
-}
-
-@media (max-width: 480px) {
-    header {
-        margin-bottom: 25px;
-    }
-
-    nav ul {
-        width: 85vw;
-    }
-
-    a {
-        font-size: 1em;
-    }
-
-    .box {
-        padding: 10px; 
-    }
-
-    h1.box-content {
-        font-size: 1.4em;
-    }
-
-    h2.box-content {
-        font-size: 1;
-    }
-
-    button {
-        font-size: 1em;
-        padding: 8px 16px;
-    }
-
-    .section {
-        margin-bottom: 25px;
-    }
-
-    footer {
-        font-size: 14px;
-    }
 }
