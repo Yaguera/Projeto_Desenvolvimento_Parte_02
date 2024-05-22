@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contato - Mercado Solidário</title>
+    <meta name="description" content="Entre em contato com o Mercado Solidário. Estamos aqui para ajudar!">
+    <meta name="keywords" content="contato, mercado solidário, ajuda, suporte">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+   <link rel="stylesheet" href="../css/contato.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="contato.html">Contato</a></li>
+                <li><a href="cadastro.html">Cadastro</a></li>
+                <li><a href="#login">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="section">
+        <div class="box box1">
+            <h1 class="box-content">Entre em Contato Conosco</h1>
+            <p class="box-content">Tem alguma dúvida ou sugestão? Preencha o
+             formulário abaixo e entraremos em contato com você o mais breve possível.</p>
+
+            <form action="/send-message" method="POST" class="box-content">
+                <div>
+                    <label for="nome">Nome:</label>
+                    <input type="text" id="nome" name="nome" required>
+                </div>
+                
+                <div>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div>
+                    <label for="mensagem">Mensagem:</label>
+                </div>
+
+                <div>
+                    <textarea id="mensagem" name="mensagem" aria-live="assertive" rows="6" required></textarea>
+                </div>
+                
+                <div>
+                    <button type="submit">Enviar</button>
+                </div>
+               
+            </form>
+
+        </div>
+        <div class="box box2">
+            <img src="/images/contato.jpg" alt="Imagem de contato">
+        </div>
+    </main>
+    <footer>
+        <p>Todos os direitos reservados.</p>
+    </footer>
+</body>
+</html>
