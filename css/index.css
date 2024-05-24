@@ -140,8 +140,6 @@ footer > p {
         font-size: 1.5em;
     }
 
-    
-
     .desktop {
         display: none;
     }
@@ -171,6 +169,10 @@ footer > p {
         margin-bottom: 75px;
     }
    
+    .section.moveis {
+        display: flex;
+    }
+
     .section.desktop {
         display: none;
     }
@@ -178,7 +180,7 @@ footer > p {
 
 @media (max-width: 768px) {
     header {
-        margin-bottom: 100px;
+        margin-bottom: 10px;
     }
 
     a {
@@ -188,6 +190,14 @@ footer > p {
     main {
         flex-direction: column;
         gap: 10px;
+    }
+
+    h1.box-content {
+        font-size: 26px;
+    }
+
+    .box img {
+        max-width: 90%;
     }
 
     .box1 {
@@ -203,6 +213,8 @@ footer > p {
     }
 
     .section {
+        flex-direction: column;
+        gap: 10px;
         margin-bottom: 50px;
     }
 
@@ -212,6 +224,11 @@ footer > p {
 }
 
 @media (max-width: 480px) {
+    
+    body {
+        width: 100%;
+    }
+
     header {
         margin-bottom: 25px;
     }
@@ -221,7 +238,12 @@ footer > p {
     }
 
     a {
-        font-size: 1em;
+        font-size: 0.80em;
+    }
+
+    .section {
+        padding: 10px;
+        margin-bottom: 25px;
     }
 
     .box {
@@ -229,11 +251,15 @@ footer > p {
     }
 
     h1.box-content {
-        font-size: 1.4em;
+        font-size: 1.3em;
     }
 
     h2.box-content {
         font-size: 1;
+    }
+
+    p.box-content {
+        text-align: left;
     }
 
     button {
@@ -241,11 +267,7 @@ footer > p {
         padding: 8px 16px;
     }
 
-    .section {
-        margin-bottom: 25px;
-    }
-
     footer {
-        font-size: 14px;
+        font-size: 12px;
     }
 }
