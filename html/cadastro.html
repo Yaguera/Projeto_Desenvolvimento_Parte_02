@@ -3,49 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
+    <title>Mercado Solidário - Cadastro</title>
 
-    <!-- <link rel="stylesheet" href="../css/index.css"> -->
+    <link rel="stylesheet" href="../css/index.css">
     <link rel="stylesheet" href="../css/cadastro.css">
     <script src="../javaScript/cadastro.js" defer></script>
 </head>
 <body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#sobre">Sobre</a></li>
-                <li><a href="#contato">Contato</a></li>
-                <li><a href="#cadastro">Cadastro</a></li>
-            </ul>
-        </nav>
-    </header>
-        <form id="formCadastro">
+    <div id="page">
+        <div class="logo">
+            <a href="./index.html">
+                Mercado Solidário
+            </a>
+        </div>
+        <div id="card-registro">
+                   
+        <div class="col-left">            
+            <form id="formCadastro">
             <fieldset>
                 <div class="formWrapper">
                     <legend>Cadastro</legend>
+                    <p></p>
                     <div class="inputWrapper">
-                        <label for="usernameInput">Usuario: </label>
-                        <input type="text" id="usernameInput" placeholder="Digite seu nome de Usuario">
+                        <label for="usernameInput">Seu nome </label>
+                        <input type="text" id="usernameInput" placeholder="Nome e Sobrenome" required>
                     </div>
                     <div class="inputWrapper">
-                        <label for="emailInput">Email: </label>
-                        <input type="email" id="emailInput" placeholder="Digite seu email">
+                        <label for="emailInput">Email </label>
+                        <input type="email" id="emailInput" required>
                     </div>
                     <div class="inputWrapper">
-                        <label for="passwordInput">Senha: </label>
-                        <input type="password" id="passwordInput" placeholder="Digite sua Senha">
+                        <label for="passwordInput">Senha</label>
+                        <input type="password" id="passwordInput" minlength="8" placeholder="Pelo menos 8 caracteres" required>
                         <div class="password-strength-bar">
-                            <div id="password-strength-indicador" class="strength-indicador"></div>
+                            <div id="password-strength-indicator" class="strength-indicator"></div>
                         </div>
-                        <p id="password-strength-text">Senha Fraca</p>
-                        <p id="tip">Sua Senha Presisa Conter: - Letras maiuculas e Menusculas - Numeros - Caracteres Especiais (Ex. @, $, !)</p>
+                        <p id="password-strength-text"></p>
+                        <p id="tip">Sua Senha Presisa conster: - Letras maiuculas e Menusculas - Numeros - Caracteres Especiais (Ex. @, $, !)</p>
+                    </div>
+                    <div class="inputWrapper">
+                        <input type="radio" name="role" id="">
+                        <input type="radio" name="role" id="">
+                        <input type="radio" name="role" id="">
                     </div>
                 </div>
             </fieldset>
-        </form>
-    <footer>
-        <p>Todos os direitos reservados.</p>
-    </footer>
+            </form>
+        </div>
+        <div class="col-right">
+        </div>
+        </div>
+    </div>
 </body>
 </html>
