@@ -1,0 +1,97 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Rede {
+  SUPERMARKET
+  ONG
+}
+
+model User {
+  ID        Int        @id @default(autoincrement())
+  Name      String
+  CPF       String     @unique
+  Email     String     @unique
+  Password  String
+  Rede      Rede
+  
+  Supermarkets Supermarket[]
+  Orgs         Org[]
+  Donations    Donation[]
+}
+
+model Supermarket {
+  ID        Int        @id @default(autoincrement())
+  UserID    Int
+  Name      String
+  CNPJ      String     @unique
+  Email     String     @unique
+  Endereco  String
+  
+  User      User       @relation(fields: [UserID], references: [ID])
+  Categories Category[]
+  Products   Product[]
+}
+
+model Org {
+  ID        Int        @id @default(autoincrement())
+  UserID    Int
+  Name      String
+  CNPJ      String     @unique
+  Email     String     @unique
+  Endereco  String
+  
+  User      User       @relation(fields: [UserID], references: [ID])
+}
+
+model Category {
+  ID            Int           @id @default(autoincrement())
+  Name          String
+  
+  Supermarkets  Supermarket[]
+  Products      Product[]
+}
+
+model Product {
+  ID             Int        @id @default(autoincrement())
+  Name           String
+  SupermarketID  Int
+  CategoryID     Int
+  Quantity       Int
+  ExpirationDate DateTime
+  Description    String
+  
+  Supermarket  Supermarket  @relation(fields: [SupermarketID], references: [ID])
+  Category     Category     @relation(fields: [CategoryID], references: [ID])
+  DonationProducts DonationProduct[]
+}
+
+model Donation {
+  ID        Int        @id @default(autoincrement())
+  UserID    Int
+  
+  User      User       @relation(fields: [UserID], references: [ID])
+  DonationProducts DonationProduct[]
+}
+
+model DonationProduct {
+  ID         Int        @id @default(autoincrement())
+  DonationID Int
+  ProductID  Int
+  
+  Donation   Donation   @relation(fields: [DonationID], references: [ID])
+  Product    Product    @relation(fields: [ProductID], references: [ID])
+
+  @@unique([DonationID, ProductID])
+}
