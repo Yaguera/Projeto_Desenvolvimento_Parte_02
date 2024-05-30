@@ -140,6 +140,10 @@ footer > p {
         font-size: 1.5em;
     }
 
+    img {
+        height: 60px;
+    }
+
     .desktop {
         display: none;
     }
@@ -235,6 +239,10 @@ footer > p {
 
     nav ul {
         width: 85vw;
+    }
+
+    li > img {
+        height: 30px !important;
     }
 
     a {
