@@ -10,6 +10,7 @@
 
     <link rel="stylesheet" href="../css/index.css">
     <link rel="stylesheet" href="../css/cadastroLogin.css">
+    <script type="text/javascript" src="https://npmcdn.com/parse/dist/parse.min.js"></script>
 </head>
 <body>
     <div id="page">
@@ -45,4 +46,40 @@
         </div>
     </div>
 </body>
+<script>
+    Parse.initialize("Yqm6Dc70xMs0ZJtBQVWhfD17ZYv5QPkxabdD8W33", "1JHSAOH53z6c2i0E1uCEnHDufoRco4vvjaJ3ng66");
+    Parse.serverURL = "https://parseapi.back4app.com/";
+
+    const logar = async (e) => {
+          e.preventDefault()
+          const nome = document.getElementById('usernameInput')
+          const senha = document.getElementById('passwordInput')
+          try {
+            // Pass the username and password to logIn function
+            let user = await Parse.User.logIn(nome.value,senha.value);
+            // Do stuff after successful login
+            let link;
+            let TypeUserId = user.get('TypeUser').id
+            switch(TypeUserId) {
+                case 'ZSPWAnWWdc':
+                    link = ".";
+                    window.location.href = link;
+                    break;
+                case 'abhNasz3Eh':
+                    link = ".";
+                    window.location.href = link;
+                    break;
+                case 'jV48s8OBkx':
+                    link = ".";
+                    window.location.href = link;
+                    break;
+                default:
+                    throw new Error("Tipo de usuário desconhecido");
+            }
+            console.log('Logged in user', user);
+          } catch (error) {
+            console.error('Error while logging in user', error);
+          }
+        }
+</script>
 </html>
