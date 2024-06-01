@@ -1,3 +1,16 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Roboto", sans-serif;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
 body::before {
     content: '';
 
@@ -23,15 +36,23 @@ body::before {
 }
 
 .logo a {
+    color: #F4EDED; 
+    text-decoration: none;
+    font-weight: bold; 
     font-size: 2em;
 }
+
 /*===== Global =====*/
 
-#card-registro, #card-login {
+#card-cadastro, #card-login {
     display: flex;
     
     background-color: #E5E5E5;
     border-radius: 20px;
+
+    margin-bottom: 50px;
+
+    overflow: hidden;
 }
 
 .col01 {
@@ -49,8 +70,8 @@ body::before {
     gap: 1rem;
 }
 
-formWrapper legend{
-    font-size: 2rem;
+.formWrapper legend{
+    font-size: 1.5rem;
     font-weight: bold;
 }
 
@@ -67,13 +88,25 @@ formWrapper legend{
     border: 1px solid #a5a2a2;
 }
 
-.inputWrapper input:focus {
-    border: 2px solid #7c7b7b;
+.bntSubmit {
+    background-color: #FF7F11;
+    color: #F4EDED;
+    border: none;
+    padding: 5px 10px;
+    font-size: 1.4em;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 10px;
+    margin: 10px 0 20px 0;
+}
+
+.bntSubmit:hover {
+    background-color: #cc6600;
 }
 
 /*===== Registro =====*/
 
-#card-registro .col02 {
+#card-cadastro .col02 {
     width: 100%;
     background-image: url("../images/registro.jpg");
     background-size: cover;
@@ -81,22 +114,111 @@ formWrapper legend{
     background-repeat: no-repeat;
 }
 
-#carf-registro .login a {
-    color: -webkit-link;
-    cursor: pointer;
-    text-decoration: underline;
-}
-
 /*===== Login =====*/
 
 #card-login {
-
+    min-height: 552px;
 }
 
 #card-login .col02 {
     width: 100%;
     background-image: url("../images/login.jpg");
     background-size: cover;
-    background-position: center top;
-    background-repeat: no-repeat;
+    background-position: center bottom;
+}
+
+
+/*==== Ajustes de Resposividade =====*/
+
+@media (max-width: 1024px) {
+    .desktop {
+        display: none;
+    }
+
+    .moveis {
+        display: block;
+    }
+
+    h1.box-content {
+        font-size: 28px;
+    }
+
+    h2.box-content {
+        font-size: 22px;
+    }
+
+    p.box-content {
+        font-size: 14px;
+    }
+
+    button {
+        margin-top: 10px;
+        font-size: 1em;
+    }
+
+    .section {
+        margin-bottom: 75px;
+    }
+   
+    .section.moveis {
+        display: flex;
+    }
+
+    .section.desktop {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    h1.box-content {
+        font-size: 26px;
+    }
+
+    .box img {
+        max-width: 90%;
+    }
+
+    .box1 {
+        padding-bottom: 10px; 
+    }
+
+    .box2 {
+        padding-top: 10px; 
+    }
+
+    button {
+        font-size: 1.2em;
+    }
+
+    .section {
+        flex-direction: column;
+        gap: 10px;
+        margin-bottom: 50px;
+    }
+}
+
+@media (max-width: 480px) {
+
+    body {
+        height: 100%;
+    }
+
+    #page {
+        margin: 0;
+    }
+
+    a {
+        font-size: 0.80em;
+    }
+
+    #card-cadastro, #card-login {
+        flex-direction: column;
+        border-radius: 0;
+        margin: 0;
+    }
+
+    .bntSubmit {
+        font-size: 1em;
+        padding: 8px 16px;
+    }
 }
