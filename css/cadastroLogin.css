@@ -27,7 +27,7 @@ body::before {
 
 #page {
     margin: auto;
-    min-width: 60%;
+    min-width: 65%;
 }
 
 .logo {
@@ -56,7 +56,7 @@ body::before {
 }
 
 .col01 {
-    min-width: 40%;
+    min-width: 50%;
     padding: 30px 50px;
 }
 
@@ -117,7 +117,7 @@ body::before {
 /*===== Login =====*/
 
 #card-login {
-    min-height: 552px;
+    min-height: 500px;
 }
 
 #card-login .col02 {
@@ -130,70 +130,20 @@ body::before {
 
 /*==== Ajustes de Resposividade =====*/
 
-@media (max-width: 1024px) {
-    .desktop {
-        display: none;
-    }
-
-    .moveis {
-        display: block;
-    }
-
-    h1.box-content {
-        font-size: 28px;
-    }
-
-    h2.box-content {
-        font-size: 22px;
-    }
-
-    p.box-content {
-        font-size: 14px;
-    }
-
-    button {
-        margin-top: 10px;
-        font-size: 1em;
-    }
-
-    .section {
-        margin-bottom: 75px;
-    }
-   
-    .section.moveis {
-        display: flex;
-    }
-
-    .section.desktop {
-        display: none;
-    }
-}
-
 @media (max-width: 768px) {
-    h1.box-content {
-        font-size: 26px;
+
+    #page {
+        margin: auto;
+        width: 50%;
     }
 
-    .box img {
-        max-width: 90%;
+    #card-cadastro .col02, #card-login .col02 {
+        display: none;
     }
 
-    .box1 {
-        padding-bottom: 10px; 
-    }
-
-    .box2 {
-        padding-top: 10px; 
-    }
-
-    button {
+    .bntSubmit {
         font-size: 1.2em;
-    }
-
-    .section {
-        flex-direction: column;
-        gap: 10px;
-        margin-bottom: 50px;
+        padding: 8px 16px;
     }
 }
 
@@ -201,10 +151,12 @@ body::before {
 
     body {
         height: 100%;
+        background-color: #E5E5E5;
     }
 
     #page {
         margin: 0;
+        width: 100%;
     }
 
     a {
