@@ -45,7 +45,6 @@ a {
     font-size: 2em;
 }
 
-
 .section {
     flex: 1;
     display: flex; 
@@ -120,11 +119,9 @@ footer > p {
     padding: 20px 0; 
 }
 
-
 .section.moveis {
     display: none;
 }
-
 
 @media (max-width: 1024px) {
     header {
@@ -228,7 +225,6 @@ footer > p {
 }
 
 @media (max-width: 480px) {
-    
     body {
         width: 100%;
     }
