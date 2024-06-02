@@ -22,7 +22,7 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 100px;
+    margin-bottom: 50   px;
 }   
 
 nav ul {
@@ -45,6 +45,33 @@ a {
     font-size: 2em;
 }
 
+.section {
+    flex: 1;
+    display: flex; 
+    gap: 30px; 
+    padding: 20px;
+    padding: 0 100px;
+    padding: 2em;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.card {
+    width: 14em;
+    height: fit-content;
+    min-height: 12.85em;
+    padding: 20px;
+    border: 1px solid #FF7F11;
+    border-radius: 15px;
+    box-shadow: 3px 3px 10px #fcb272;
+}
+
+img {
+    width: 100%;
+    padding-bottom: 4px;
+}
+
 footer {
     background-color: #FF7F11;
     width: 100%;
@@ -63,10 +90,6 @@ footer > p {
 
 
 @media (max-width: 1024px) {
-    header {
-        margin-bottom: 50px;
-    }
-
     nav ul {
         width: 85vw;
         padding: 20px 0;
@@ -80,8 +103,8 @@ footer > p {
         margin-left: 111px;
     }
 
-    img {
-        height: 60px;
+    .section {
+        margin-bottom: 75px;
     }
 }
 
@@ -103,12 +126,15 @@ footer > p {
         margin-left: 80px;
     }
 
-    img {
-        height: 40px;
-    }
 
     footer {
         padding: 10px;   
+    }
+
+    .section {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
     }
 }
 
@@ -138,8 +164,19 @@ footer > p {
         margin-left: 33px;
     }
 
-    img {
-        height: 25px;
+
+    .section {
+        padding: 10px;
+        margin-bottom: 25px;
+        justify-content: center;
+    }
+
+    .card {
+        width: 11em;
+    }
+
+    span {
+        font-size: 14px;
     }
 
     footer {
