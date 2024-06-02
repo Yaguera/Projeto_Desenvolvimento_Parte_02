@@ -1,0 +1,158 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Roboto", sans-serif;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+body {
+    margin: 0;
+}
+
+header {
+    background-color: #FF7F11;
+    width: 100%;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 50px;
+}   
+
+nav ul {
+    width: 85vw;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px; 
+}
+
+ul {
+    padding: 30px 0; 
+}
+
+a {
+    color: #F4EDED; 
+    text-decoration: none;
+    font-weight: bold; 
+    font-size: 2em;
+}
+
+.section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+input, textarea {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+    padding: 10px;
+    font-size: 1em;
+}
+
+.box {
+    width: 80%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+}
+
+.box-content {
+    align-self: flex-start; 
+    text-align: left; 
+    width: 100%;
+    margin-bottom: 12px;
+}
+
+h1.box-content {
+    font-size: 32px;
+}
+
+h2 {
+    font-size: 24px;
+}
+
+p {
+    font-size: 18px;
+}
+
+.categoria label {
+    display: center;
+    align-items: center;
+    font-size: 1em;
+}
+
+.categoria input {
+    margin-right: 10em;
+}
+
+button {
+    background-color: #FF7F11;
+    color: #F4EDED;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1.2em;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+button:hover {
+    background-color: #cc6600;
+}
+
+footer {
+    background-color: #FF7F11;
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    font-size: 16px;
+    font-weight: bold;
+    color: #F4EDED;
+}
+
+footer > p {
+    padding: 20px 0; 
+}
+
+.product-item {
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 10px;
+}
+
+/* Responsivo */
+@media (min-width: 768px) {
+    .section {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+    .box {
+        width: 45%;
+    }
+}
+
+@media (max-width: 767px) {
+    .box {
+        width: 90%;
+    }
+}
