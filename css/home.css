@@ -16,22 +16,33 @@ body {
 }
 
 header {
+    position: fixed;
     background-color: #FF7F11;
     width: 100%;
-    height: 100px;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 100px;
-    padding: 16px 0;
 }   
 
 nav{ 
     width: 100%;
     display: flex;
+    flex-direction: column;
     align-items: center;
     padding: 0 24px;
     justify-content: space-between;
+}
+
+.nav-desktop{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav img{
+    width: 140px;
+    height: 20px;
 }
 
 nav ul {
@@ -59,21 +70,22 @@ a {
     flex-direction: column;
     justify-content: center;
     width: 40px;
-
     background: transparent;
     border: none;
     z-index: 10;
     gap: 5px;
+    user-select: none;
 }
 .hamburger div {
     width: 100%;
     height: .4rem;
     border-radius: 1rem;
     background-color: white;
-    transition: all 0.3s ease;
 }
 .nav-mobile {
     display: none;
+    position: absolute;
+    top: 5rem;
     flex-direction: column;
     align-items: center;
     text-align:center;
@@ -86,6 +98,8 @@ a {
 }
 .nav-mobile ul {
     list-style: none;
+    display: flex;
+    flex-direction: column;
     padding: 0;
 }
 .nav-mobile ul li {
@@ -102,17 +116,22 @@ a {
     .hamburger {
         display: flex;
     }
-    nav ul {
+    .nav-ul-desktop {
         display: none;
     }
     .active {
         display: none;
+        ;
     }
 }
 
 @media (min-width: 1025px) {
     .nav-mobile.active {
         display: none;
+    }
+
+    .nav-mobile ul{
+        display:none;
     }
 }
 
@@ -122,7 +141,7 @@ a {
     display: flex; 
     gap: 30px; 
     padding: 20px;
-    margin-bottom: 100px;
+    margin: 100px 0;
     padding: 0 100px;
 }
 
@@ -203,6 +222,10 @@ footer > p {
 
 
 @media (max-width: 1024px) {
+
+    main.section.desktop{
+        margin-top: 10px;
+    }
 
     nav ul {
         width: 85vw;
@@ -309,10 +332,14 @@ footer > p {
 }
 
 @media (max-width: 768px) {
+
     body {
         width: 100%;
     }
 
+    header{
+        padding: 12px 0;
+    }
 
     nav ul {
         width: 85vw;
@@ -324,6 +351,10 @@ footer > p {
 
     a {
         font-size: 0.80em;
+    }
+
+  .hero{
+        margin-top: 100px;
     }
 
     .section {

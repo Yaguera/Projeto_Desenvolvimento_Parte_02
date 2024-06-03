@@ -12,27 +12,29 @@
 <body>
     <header>
         <nav>
-            <img src="/images/logo.png" href="index.html" alt="Logo do Site" style="height: 60px;">
-            <ul>
-                <li><a href="#sobre">Sobre</a></li>
-                <li><a href="/html/cadastro-usuario.html">Cadastro</a></li>
-                <li><a href="/html/login-usuario.html">Login</a></li>
-            </ul>
-            <div class="hamburger">
-                <div></div>
-                <div></div>
-                <div></div>
+            <div class="nav-desktop">
+                <img src="/images/logo.png" href="index.html" alt="Logo do Site" style="height: 60px;">
+                <ul class="nav-ul-desktop">
+                    <li><a href="#sobre">Sobre</a></li>
+                    <li><a href="/html/cadastro-usuario.html">Cadastro</a></li>
+                    <li><a href="/html/login-usuario.html">Login</a></li>
+                </ul>
+                <div class="hamburger">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+            <div class="nav-mobile">
+                <ul>
+                    <li><a href="#sobre">Sobre</a></li>
+                    <li><a href="/html/cadastro-usuario.html">Cadastro</a></li>
+                    <li><a href="/html/login-usuario.html">Login</a></li>
+                </ul>
             </div>
         </nav>
 
     </header>
-    <div class="nav-mobile">
-        <ul>
-            <li><a href="#sobre">Sobre</a></li>
-            <li><a href="/html/cadastro.html">Cadastro</a></li>
-            <li><a href="/html/login.html">Login</a></li>
-        </ul>
-    </div>
     <!--DISPOSITIVOS DESKTOP-->
     <main class="section desktop">
         <div class="box box1" >
@@ -61,7 +63,7 @@
     </section>
 
     <!--DISPOSITIVOS MOVEIS-->
-    <main class="section moveis">
+    <main class="section moveis hero">
         <div class="box box2">
             <img src="/images/voluntarios.jpg" alt="Imagem de Doação">
         </div>
@@ -69,7 +71,7 @@
             <h1 class="box-content">Conectando Supermercados e Organizações</h1>
             <p class="box-content">Nosso projeto tem como objetivo facilitar a doação eficiente de produtos próximos do vencimento,
             conectando supermercados a organizações beneficentes.</p>
-            <button onclick="window.location.href='#cadastro'">Quero fazer a diferença</button>
+            <button><a href="/html/cadastro-usuario.html">Quero fazer a diferença</a></button>
         </div>
     </main>
     <section id="sobre" class="section moveis">
@@ -83,7 +85,7 @@
                 beneficentes, garantindo que alimentos ainda bons para consumo cheguem a quem mais precisa. Nosso 
                 objetivo é criar uma rede colaborativa onde supermercados, organizações e indivíduos possam contribuir
                 para um mundo mais sustentável e solidário.</p>
-                <button onclick="window.location.href='#cadastro'">Quero fazer parte do Mercado Solidário</button>
+                <button><a href="/html/cadastro-usuario.html">Quero fazer parte do Mercado Solidário</a></button>
         </div>
     </section>
     <footer>
