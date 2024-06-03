@@ -5,12 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Produtos</title>
     <link rel="stylesheet" href="../css/supermercados.css">
+    <script type="text/javascript" src="https://npmcdn.com/parse/dist/parse.min.js"></script>
 </head>
 <body>
     <header>
         <nav>
             <ul>
-                <li><a href="#"><img src="../images/logo.png" alt="Logo do Site" style="height: 60px;"></a></li>
+                <li><a href="./supermercados.html"><img src="../images/logo.png" alt="Logo do Site" style="height: 60px;"></a></li>
+                <li><a href=""><img id="logout" src="../images/logout-svgrepo-com.svg" alt="logout"></a></li>
             </ul>
         </nav>
     </header>
@@ -26,15 +28,18 @@
         <div class="box box2">
             <div class="box-content">
                 <h1>Cadastro de Supermercado</h1>
-                <form id="supermercado-form">
+                <form id="supermercado-form" onsubmit=verificarUser()>
                     <label for="nome">Nome do supermercado:</label>
                     <input type="text" id="nome" name="nome" required>
+
+                    <label for="email">Email do supermercado:</label>
+                    <input type="email" id="email" name="email" required>
                     
                     <label for="cnpj">CNPJ:</label>
                     <input type="text" id="cnpj" name="cnpj" required>
-                    
-                    <label for="descricao">Descrição do supermercado:</label>
-                    <textarea id="descricao" name="descricao" rows="4" required></textarea>
+
+                    <label for="endereco">Endereço do supermercado:</label>
+                    <input type="text" id="endereco" name="endereco" required>
                     
                     <button type="submit">Cadastrar Supermercado</button>
                 </form>
@@ -46,12 +51,36 @@
     </footer>
 
     <script>
+        Parse.initialize("Yqm6Dc70xMs0ZJtBQVWhfD17ZYv5QPkxabdD8W33", "1JHSAOH53z6c2i0E1uCEnHDufoRco4vvjaJ3ng66");
+        Parse.serverURL = "https://parseapi.back4app.com/";
+
+        
+
         document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('supermercado-form').addEventListener('submit', function(event) {
                 event.preventDefault();
+
+                
+            });
+        });
+
+
+        async function criarSupermercado(currentUser){
+            try {
                 const nome = document.getElementById('nome').value;
                 const cnpj = document.getElementById('cnpj').value;
-                const descricao = document.getElementById('descricao').value;
+                const email = document.getElementById('email').value;
+                const endereco = document.getElementById('endereco').value;
+                // Criar supermercado
+                const Supermercado = Parse.Object.extend("Supermercado");
+                const supermercado = new Supermercado();
+                supermercado.set("user", currentUser);
+                supermercado.set("nome", nome);
+                supermercado.set("cnpj", cnpj);
+                supermercado.set("email", email);
+                supermercado.set("adress", endereco);
+
+                await supermercado.save();
 
                 const supermercadoList = document.getElementById('supermercado-list');
                 const supermercadoItem = document.createElement('div');
@@ -59,12 +88,35 @@
                 supermercadoItem.innerHTML = `
                     <h2>${nome}</h2>
                     <p><strong>CNPJ:</strong> ${cnpj}</p>
-                    <p><strong>Descrição:</strong> ${descricao}</p>
-                `;
+                    <p><strong>E-mail:</strong> ${email}</p>
+                    <p><strong>Endereço:</strong> ${endereco}</p>
+                    `;
                 supermercadoList.appendChild(supermercadoItem);
                 document.getElementById('supermercado-form').reset();
-            });
-        });
+
+                console.log("Supermarket created:", supermercado);
+
+                alert('Supermercado cadastrado com sucesso!');
+            } catch (error) {
+                console.error("Error:", error);
+                alert('Erro ao cadastrar supermercado.');
+            }
+            }
+
+
+
+        
+        async function verificarUser() {
+            try {
+                const currentUser = Parse.User.current();
+                if (currentUser) {
+                console.log('Informações do usuário logado:', currentUser.toJSON());
+                }
+                criarSupermercado(currentUser)
+            } catch (error) {
+                alert(error)
+            }
+        }
     </script>
 </body>
 </html>

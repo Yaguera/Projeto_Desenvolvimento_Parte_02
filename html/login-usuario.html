@@ -21,13 +21,13 @@
         <div id="card-login">
             <div class="col02"></div>
             <div class="col01">
-                <form id="formLogin">
+                <form id="formLogin" onsubmit=logar(event)>
                     <fieldset>
                         <div class="formWrapper">
                             <legend>Login</legend>
                             <div class="inputWrapper">
                                 <label for="usernameInput">Seu nome </label>
-                                <input type="text" class="usernameInput" placeholder="Nome e Sobrenome" required>
+                                <input type="text" id="usernameInput" placeholder="Nome e Sobrenome" required>
                             </div>
                             <div class="inputWrapper">
                                 <label for="passwordInput">Senha</label>
@@ -61,14 +61,10 @@
             let TypeUserId = user.get('TypeUser').id
             switch(TypeUserId) {
                 case 'ZSPWAnWWdc':
-                    link = ".";
+                    link = "./supermercados.html";
                     window.location.href = link;
                     break;
                 case 'abhNasz3Eh':
-                    link = ".";
-                    window.location.href = link;
-                    break;
-                case 'jV48s8OBkx':
                     link = ".";
                     window.location.href = link;
                     break;
