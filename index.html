@@ -12,14 +12,27 @@
 <body>
     <header>
         <nav>
+            <img src="/images/logo.png" href="index.html" alt="Logo do Site" style="height: 60px;">
             <ul>
-                <li><img src="/images/logo.png" href="index.html" alt="Logo do Site" style="height: 60px;"></li>
                 <li><a href="#sobre">Sobre</a></li>
                 <li><a href="/html/cadastro.html">Cadastro</a></li>
                 <li><a href="/html/login.html">Login</a></li>
             </ul>
+            <div class="hamburger">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
         </nav>
+
     </header>
+    <div class="nav-mobile">
+        <ul>
+            <li><a href="#sobre">Sobre</a></li>
+            <li><a href="/html/cadastro.html">Cadastro</a></li>
+            <li><a href="/html/login.html">Login</a></li>
+        </ul>
+    </div>
     <!--DISPOSITIVOS DESKTOP-->
     <main class="section desktop">
         <div class="box box1" >
@@ -76,5 +89,16 @@
     <footer>
        <p>Todos os direitos reservados.</p>
     </footer>
+    <script>
+        const hamburger = document.querySelector(".hamburger")
+        const navMobile = document.querySelector(".nav-mobile")
+
+        hamburger.addEventListener('click', function(e) {
+            navMobile.classList.toggle("active")
+
+        })
+
+        console.log(navMobile)
+    </script>
 </body>
 </html>
