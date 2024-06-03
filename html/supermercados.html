@@ -10,14 +10,14 @@
     <header>
         <nav>
             <ul>
-                <li><a href="#"><img src="../images/logo.png" href="" alt="Logo do Site" style="height: 60px;"></a></li>
+                <li><a href="#"><img src="../images/logo.png" alt="Logo do Site" style="height: 60px;"></a></li>
             </ul>
         </nav>
     </header>
     <section class="section">
         <div class="box box1">
             <div class="box-content">
-                <h1 class="box-content">Supermercados Já Cadastrados</h1>
+                <h1>Supermercados Já Cadastrados</h1>
                 <div id="supermercado-list">
                     <!-- Produtos cadastrados aparecerão aqui -->
                 </div>
@@ -25,24 +25,18 @@
         </div>
         <div class="box box2">
             <div class="box-content">
-                <h1 class="box-content">Cadastro de Produtos</h1>
+                <h1>Cadastro de Supermercado</h1>
                 <form id="supermercado-form">
-                    <label class="box-content" for="nome">Nome:</label>
+                    <label for="nome">Nome do supermercado:</label>
                     <input type="text" id="nome" name="nome" required>
                     
-                    <label class="box-content" for="validade">Data de Validade:</label>
-                    <input type="date" id="validade" name="validade" required>
+                    <label for="cnpj">CNPJ:</label>
+                    <input type="text" id="cnpj" name="cnpj" required>
                     
-                    <label class="box-content" for="quantidade">Quantidade:</label>
-                    <input type="number" id="quantidade" name="quantidade" required>
-                    
-                    <label class="box-content" for="categoria">Categoria:</label><br><br><br><br>
-                    <br><br><br><br>
-                    
-                    <label class="box-content" for="descricao">Descrição do Produto:</label>
+                    <label for="descricao">Descrição do supermercado:</label>
                     <textarea id="descricao" name="descricao" rows="4" required></textarea>
                     
-                    <button type="submit">Cadastrar Produto</button>
+                    <button type="submit">Cadastrar Supermercado</button>
                 </form>
             </div>
         </div>
@@ -52,21 +46,24 @@
     </footer>
 
     <script>
-        document.getElementById('supermercado-form').addEventListener('submit', function(event) {
-            event.preventDefault();
-            const nome = document.getElementById('nome').value;
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('supermercado-form').addEventListener('submit', function(event) {
+                event.preventDefault();
+                const nome = document.getElementById('nome').value;
+                const cnpj = document.getElementById('cnpj').value;
+                const descricao = document.getElementById('descricao').value;
 
-            const supermercadoList = document.getElementById('supermercado-list');
-            const supermercadoItem = document.createElement('div');
-            supermercadoItem.classList.add('supermercado-item');
-            supermercadoItem.innerHTML = `
-                <h2>${nome}</h2>
-                <p><strong>Quantidade:</strong> </p>
-                <p><strong>Descrição:</strong> </p>
-            `;
-            supermercadoList.appendChild(supermercadoItem);
-
-            document.getElementById('supermercado-form').reset();
+                const supermercadoList = document.getElementById('supermercado-list');
+                const supermercadoItem = document.createElement('div');
+                supermercadoItem.classList.add('supermercado-item');
+                supermercadoItem.innerHTML = `
+                    <h2>${nome}</h2>
+                    <p><strong>CNPJ:</strong> ${cnpj}</p>
+                    <p><strong>Descrição:</strong> ${descricao}</p>
+                `;
+                supermercadoList.appendChild(supermercadoItem);
+                document.getElementById('supermercado-form').reset();
+            });
         });
     </script>
 </body>
