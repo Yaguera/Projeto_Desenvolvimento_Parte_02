@@ -18,7 +18,7 @@
         <div class="box box1">
             <div class="box-content">
                 <h1 class="box-content">Supermercados Já Cadastrados</h1>
-                <div id="product-list">
+                <div id="supermercado-list">
                     <!-- Produtos cadastrados aparecerão aqui -->
                 </div>
             </div>
@@ -26,7 +26,7 @@
         <div class="box box2">
             <div class="box-content">
                 <h1 class="box-content">Cadastro de Produtos</h1>
-                <form id="product-form">
+                <form id="supermercado-form">
                     <label class="box-content" for="nome">Nome:</label>
                     <input type="text" id="nome" name="nome" required>
                     
@@ -37,12 +37,7 @@
                     <input type="number" id="quantidade" name="quantidade" required>
                     
                     <label class="box-content" for="categoria">Categoria:</label><br><br><br><br>
-                    <div class="box-content categoria">
-                        <label><input type="radio" id="bebidas" name="categoria" value="Bebidas" required> Bebidas</label><br>
-                        <label><input type="radio" id="nao-perecivel" name="categoria" value="Não Perecível" required> Não Perecível</label><br>
-                        <label><input type="radio" id="perecivel" name="categoria" value="Perecível" required> Perecível</label><br>
-                        <label><input type="radio" id="enlatado" name="categoria" value="Enlatado" required> Enlatado</label>
-                    </div><br><br><br><br>
+                    <br><br><br><br>
                     
                     <label class="box-content" for="descricao">Descrição do Produto:</label>
                     <textarea id="descricao" name="descricao" rows="4" required></textarea>
@@ -57,27 +52,21 @@
     </footer>
 
     <script>
-        document.getElementById('product-form').addEventListener('submit', function(event) {
+        document.getElementById('supermercado-form').addEventListener('submit', function(event) {
             event.preventDefault();
             const nome = document.getElementById('nome').value;
-            const validade = document.getElementById('validade').value;
-            const quantidade = document.getElementById('quantidade').value;
-            const categoria = document.querySelector('input[name="categoria"]:checked').value;
-            const descricao = document.getElementById('descricao').value;
 
-            const productList = document.getElementById('product-list');
-            const productItem = document.createElement('div');
-            productItem.classList.add('product-item');
-            productItem.innerHTML = `
+            const supermercadoList = document.getElementById('supermercado-list');
+            const supermercadoItem = document.createElement('div');
+            supermercadoItem.classList.add('supermercado-item');
+            supermercadoItem.innerHTML = `
                 <h2>${nome}</h2>
-                <p><strong>Validade:</strong> ${validade}</p>
-                <p><strong>Quantidade:</strong> ${quantidade}</p>
-                <p><strong>Categoria:</strong> ${categoria}</p>
-                <p><strong>Descrição:</strong> ${descricao}</p>
+                <p><strong>Quantidade:</strong> </p>
+                <p><strong>Descrição:</strong> </p>
             `;
-            productList.appendChild(productItem);
+            supermercadoList.appendChild(supermercadoItem);
 
-            document.getElementById('product-form').reset();
+            document.getElementById('supermercado-form').reset();
         });
     </script>
 </body>
