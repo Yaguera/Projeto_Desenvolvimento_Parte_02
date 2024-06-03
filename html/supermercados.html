@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produtos</title>
+    <link rel="stylesheet" href="../css/supermercados.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#"><img src="../images/logo.png" href="" alt="Logo do Site" style="height: 60px;"></a></li>
+                <li><a href="#">Sobre</a></li>
+                <li><a href="#">Projetos</a></li>
+                <li><a href="#">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section class="section">
+        <div class="box box1">
+            <div class="box-content">
+                <h1 class="box-content">Supermercados Já Cadastrados</h1>
+                <div id="product-list">
+                    <!-- Produtos cadastrados aparecerão aqui -->
+                </div>
+            </div>
+        </div>
+        <div class="box box2">
+            <div class="box-content">
+                <h1 class="box-content">Cadastro de Produtos</h1>
+                <form id="product-form">
+                    <label class="box-content" for="nome">Nome:</label>
+                    <input type="text" id="nome" name="nome" required>
+                    
+                    <label class="box-content" for="validade">Data de Validade:</label>
+                    <input type="date" id="validade" name="validade" required>
+                    
+                    <label class="box-content" for="quantidade">Quantidade:</label>
+                    <input type="number" id="quantidade" name="quantidade" required>
+                    
+                    <label class="box-content" for="categoria">Categoria:</label><br><br><br><br>
+                    <div class="box-content categoria">
+                        <label><input type="radio" id="bebidas" name="categoria" value="Bebidas" required> Bebidas</label><br>
+                        <label><input type="radio" id="nao-perecivel" name="categoria" value="Não Perecível" required> Não Perecível</label><br>
+                        <label><input type="radio" id="perecivel" name="categoria" value="Perecível" required> Perecível</label><br>
+                        <label><input type="radio" id="enlatado" name="categoria" value="Enlatado" required> Enlatado</label>
+                    </div><br><br><br><br>
+                    
+                    <label class="box-content" for="descricao">Descrição do Produto:</label>
+                    <textarea id="descricao" name="descricao" rows="4" required></textarea>
+                    
+                    <button type="submit">Cadastrar Produto</button>
+                </form>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <p>&copy; 2024 Cozinha Solidária. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        document.getElementById('product-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const nome = document.getElementById('nome').value;
+            const validade = document.getElementById('validade').value;
+            const quantidade = document.getElementById('quantidade').value;
+            const categoria = document.querySelector('input[name="categoria"]:checked').value;
+            const descricao = document.getElementById('descricao').value;
+
+            const productList = document.getElementById('product-list');
+            const productItem = document.createElement('div');
+            productItem.classList.add('product-item');
+            productItem.innerHTML = `
+                <h2>${nome}</h2>
+                <p><strong>Validade:</strong> ${validade}</p>
+                <p><strong>Quantidade:</strong> ${quantidade}</p>
+                <p><strong>Categoria:</strong> ${categoria}</p>
+                <p><strong>Descrição:</strong> ${descricao}</p>
+            `;
+            productList.appendChild(productItem);
+
+            document.getElementById('product-form').reset();
+        });
+    </script>
+</body>
+</html>
