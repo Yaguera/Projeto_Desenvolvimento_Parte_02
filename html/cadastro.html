@@ -13,31 +13,31 @@
 <body>
     <div id="page">
         <div class="logo">
-            <a href="home.html">
-                <img src="/images/logo.png" href="home.html" alt="Logo do Site" style="height: 60px;">
+            <a href="../index.html">
+                <img src="/images/logo.png" href="../index.html" alt="Logo do Site" style="height: 60px;">
             </a>
         </div>
         <div id="card-cadastro">            
             <div class="col01">            
-                <form id="formCadastro">
+                <form id="formCadastro" onsubmit=cadastrarUser(event)>
                     <fieldset>
                         <legend>Cadastro</legend>
                         <div class="formWrapper">
                             <div class="inputWrapper">
                                 <label for="usernameInput">Seu nome</label>
-                                <input type="text" id="usernameInput" placeholder="Nome e Sobrenome" required>
+                                <input type="text" id="usernameInput" placeholder="Nome e Sobrenome" >
                             </div>
                             <div class="inputWrapper">
                                 <label for="cpfInput">CPF</label>
-                                <input type="text" id="cpfInput" required>
+                                <input type="text" id="cpfInput" >
                             </div>
                             <div class="inputWrapper">
                                 <label for="emailInput">Email</label>
-                                <input type="email" id="emailInput" required>
+                                <input type="email" id="emailInput" >
                             </div>
                             <div class="inputWrapper">
                                 <label for="passwordInput">Senha</label>
-                                <input type="password" id="passwordInput" minlength="8" placeholder="Pelo menos 8 caracteres" required>
+                                <input type="password" id="passwordInput" minlength="8" placeholder="Pelo menos 8 caracteres" >
                             </div>
                             <div class="inputWrapper">
                                 <span>Tipo de usuário</span>
@@ -53,6 +53,7 @@
                             <button type="submit" class="bntSubmit">Criar</button>
                         </div>
                     </fieldset>
+                    <p style="color: red;" id="errorMessage"></p>
                 </form>
                 <div class="rotaLogin">
                     <p>
@@ -73,6 +74,7 @@
             const username = document.getElementById("usernameInput");
             const password = document.getElementById("passwordInput");
             const email = document.getElementById("emailInput");
+            const cpf = document.getElementById("cpfInput")
             const errorMessage = document.getElementById('errorMessage');
             
             // Resetar estilos de borda e mensagem de erro
@@ -108,6 +110,7 @@
                     user.set('email', email.value);
                     user.set('TypeUser', typeUser);
                     user.set('password', password.value);
+                    user.set('cpf',cpf.value);
 
                     const userResult = await user.signUp();
                     if (userResult) {
