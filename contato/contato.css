@@ -23,7 +23,7 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 50px;
+    margin-bottom: 100px;
 }   
 
 nav ul {
@@ -48,28 +48,23 @@ a {
 
 .section {
     display: flex;
-    flex-direction: column;
-    align-items: center;
+   
+   
 }
 
-input, textarea {
-    margin-top: 10px;
-    margin-bottom: 10px;
-    width: 100%;
-    padding: 10px;
-    font-size: 1em;
+input {
+ margin-top: 20px;
+ margin-bottom: 20px;
 }
 
 .box {
-    width: 80%;
+    flex: 1;
     padding: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center; 
     text-align: center;
-    margin-bottom: 20px;
-    border: 1px solid #ddd;
-    border-radius: 10px;
 }
 
 .box-content {
@@ -80,23 +75,38 @@ input, textarea {
 }
 
 h1.box-content {
-    font-size: 32px;
+  font-size: 42px;
 }
 
-h2 {
-    font-size: 24px;
+h2.box-content {
+    font-size: 34px;
 }
 
-p {
-    font-size: 18px;
+p.box-content {
+    font-size: 20px;
+  }
+
+.box img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px; 
 }
+
+.box1 {
+    padding-left: 100px;
+}
+
+.box2 {
+    padding-right: 100px;
+}
+
 
 button {
     background-color: #FF7F11;
     color: #F4EDED;
     border: none;
     padding: 10px 20px;
-    font-size: 1.2em;
+    font-size: 2em;
     font-weight: bold;
     cursor: pointer;
     border-radius: 10px;
@@ -123,26 +133,3 @@ footer > p {
     padding: 20px 0; 
 }
 
-.supermercado-item {
-    border: 1px solid #ddd;
-    padding: 20px;
-    margin: 20px 0;
-    border-radius: 10px;
-}
-
-/* Responsivo */
-@media (min-width: 768px) {
-    .section {
-        flex-direction: row;
-        align-items: flex-start;
-    }
-    .box {
-        width: 45%;
-    }
-}
-
-@media (max-width: 767px) {
-    .box {
-        width: 90%;
-    }
-}
