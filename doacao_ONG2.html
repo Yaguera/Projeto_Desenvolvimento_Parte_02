@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Receber Doações</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: "Roboto", sans-serif;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        body {
+            margin: 0;
+        }
+
+        header {
+            background-color: #FF7F11;
+            width: 100%;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 50px;
+        }   
+
+        nav ul {
+            width: 85vw;
+            list-style: none;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px; 
+        }
+
+        ul {
+            padding: 30px 0; 
+        }
+
+        a {
+            color: #F4EDED; 
+            text-decoration: none;
+            font-weight: bold; 
+            font-size: 2em;
+        }
+
+        .section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        input, textarea {
+            margin-top: 10px;
+            margin-bottom: 10px;
+            width: 100%;
+            padding: 10px;
+            font-size: 1em;
+        }
+
+        .box {
+            width: 80%;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+        }
+
+        .box-content {
+            align-self: flex-start; 
+            text-align: left; 
+            width: 100%;
+            margin-bottom: 12px;
+        }
+
+        h1.box-content {
+            font-size: 32px;
+        }
+
+        h2 {
+            font-size: 24px;
+        }
+
+        p {
+            font-size: 18px;
+        }
+
+        .categoria label {
+            display: center;
+            align-items: center;
+            font-size: 1em;
+        }
+
+        .categoria input {
+            margin-right: 10em;
+        }
+
+        button {
+            background-color: #FF7F11;
+            color: #F4EDED;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1.2em;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background-color: #cc6600;
+        }
+
+        footer {
+            background-color: #FF7F11;
+            width: 100%;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center; 
+            font-size: 16px;
+            font-weight: bold;
+            color: #F4EDED;
+        }
+
+        footer > p {
+            padding: 20px 0; 
+        }
+
+        .doacao {
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+            width: 80%;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .accept-button {
+            background-color: #FF7F11;
+            color: #F4EDED;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1.2em;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 10px;
+            margin-top: 10px;
+        }
+
+        .accept-button:hover {
+            background-color: #cc6600;
+        }
+
+        /* Responsivo */
+        @media (min-width: 768px) {
+            .section {
+                flex-direction: row;
+                align-items: flex-start;
+            }
+            .box {
+                width: 45%;
+            }
+            .doacao {
+                width: 45%;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .box {
+                width: 90%;
+            }
+            .doacao {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#">Início</a></li>
+                <li><a href="#">Sobre</a></li>
+                <li><a href="#">Projetos</a></li>
+                <li><a href="#">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="section">
+            <div class="box box1">
+                <div class="box-content">
+                    <h1 class="box-content">Doações Disponíveis</h1>
+                    <div id="doacoes-list">
+                        <div class="doacao">
+                            <h2>Supermercado X</h2>
+                            <p><strong>Produto:</strong> Leite</p>
+                            <p><strong>Quantidade:</strong> 20 unidades</p>
+                            <p><strong>Data de Validade:</strong> 10/06/2024</p>
+                            <p><strong>Local para Retirada:</strong> Rua ABC, 123</p>
+                            <button class="accept-button" onclick="aceitarDoacao(1)">Aceitar Doação</button>
+                        </div>
+
+                        <div class="doacao">
+                            <h2>Supermercado Y</h2>
+                            <p><strong>Produto:</strong> Pão</p>
+                            <p><strong>Quantidade:</strong> 50 unidades</p>
+                            <p><strong>Data de Validade:</strong> 05/06/2024</p>
+                            <p><strong>Local para Retirada:</strong> Avenida XYZ, 456</p>
+                            <button class="accept-button" onclick="aceitarDoacao(2)">Aceitar Doação</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Cozinha Solidária. Todos os direitos reservados.</p>
+    </footer>
+    <script>
+        function aceitarDoacao(doacaoId) {
+            alert('Doação ' + doacaoId + ' aceita!');
+        }
+    </script>
+</body>
+</html>
