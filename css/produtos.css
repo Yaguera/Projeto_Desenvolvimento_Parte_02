@@ -14,6 +14,8 @@ html, body {
 
 body {
     margin: 0;
+    display: flex;
+    flex-direction: column;
 }
 
 header {
@@ -24,7 +26,7 @@ header {
     align-items: center;
     justify-content: center;
     margin-bottom: 50px;
-}   
+}
 
 nav ul {
     width: 85vw;
@@ -32,24 +34,32 @@ nav ul {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 20px; 
+    gap: 20px;
+}
+
+#logout {
+    width: 50px;
 }
 
 ul {
-    padding: 30px 0; 
+    padding: 30px 0;
 }
 
 a {
-    color: #F4EDED; 
+    color: #F4EDED;
     text-decoration: none;
-    font-weight: bold; 
+    font-weight: bold;
     font-size: 2em;
 }
 
 .section {
+    flex: 1; /* Flexível para preencher o espaço disponível */
+    position: relative;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
+    height: fit-content;
 }
 
 input, textarea {
@@ -73,8 +83,8 @@ input, textarea {
 }
 
 .box-content {
-    align-self: flex-start; 
-    text-align: left; 
+    align-self: flex-start;
+    text-align: left;
     width: 100%;
     margin-bottom: 12px;
 }
@@ -123,14 +133,14 @@ footer {
     height: 50px;
     display: flex;
     align-items: center;
-    justify-content: center; 
+    justify-content: center;
     font-size: 16px;
     font-weight: bold;
     color: #F4EDED;
 }
 
 footer > p {
-    padding: 20px 0; 
+    padding: 20px 0;
 }
 
 .product-item {

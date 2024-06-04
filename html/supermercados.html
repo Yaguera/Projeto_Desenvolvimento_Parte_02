@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Produtos</title>
+    <title>Supermercados</title>
     <link rel="stylesheet" href="../css/supermercados.css">
     <script type="text/javascript" src="https://npmcdn.com/parse/dist/parse.min.js"></script>
 </head>
@@ -55,29 +55,34 @@
         Parse.serverURL = "https://parseapi.back4app.com/";
 
         document.addEventListener('DOMContentLoaded', function() {
-            document.getElementById('supermercado-form').addEventListener('submit', function(event) {
+            document.getElementById('supermercado-form').addEventListener('submit', async function(event) {
                 event.preventDefault();
-                verificarUser();
+                await criarSupermercado();
             });
             listarSupermercados();
             document.getElementById('logout').addEventListener('click', logoutUser);
         });
 
-        async function criarSupermercado(currentUser) {
+        async function criarSupermercado() {
             try {
+                const currentUser = Parse.User.current();
+                if (!currentUser) {
+                    window.location.href = '/html/login-usuario.html';
+                    return;
+                }
+
                 const nome = document.getElementById('nome').value;
                 const cnpj = document.getElementById('cnpj').value;
                 const email = document.getElementById('email').value;
                 const endereco = document.getElementById('endereco').value;
 
-                // Criar supermercado
                 const Supermercado = Parse.Object.extend("Supermercado");
                 const supermercado = new Supermercado();
                 supermercado.set("user", currentUser);
                 supermercado.set("nome", nome);
                 supermercado.set("cnpj", cnpj);
                 supermercado.set("email", email);
-                supermercado.set("adress", endereco);
+                supermercado.set("address", endereco);
 
                 await supermercado.save();
 
@@ -85,35 +90,19 @@
                 const supermercadoItem = document.createElement('div');
                 supermercadoItem.classList.add('supermercado-item');
                 supermercadoItem.innerHTML = `
-                    <h2>${nome}</h2>
+                    <h2><a href="./produtos.html?id=${supermercado.id}">${nome}</a></h2>
                     <p><strong>CNPJ:</strong> ${cnpj}</p>
                     <p><strong>E-mail:</strong> ${email}</p>
                     <p><strong>Endereço:</strong> ${endereco}</p>
                 `;
                 supermercadoList.appendChild(supermercadoItem);
-                document.getElementById('supermercado-form').reset();
 
-                console.log("Supermarket created:", supermercado);
+                document.getElementById('supermercado-form').reset();
 
                 alert('Supermercado cadastrado com sucesso!');
             } catch (error) {
-                console.error("Error:", error);
+                console.error("Erro ao cadastrar supermercado:", error);
                 alert('Erro ao cadastrar supermercado.');
-            }
-        }
-
-        async function verificarUser() {
-            try {
-                const currentUser = Parse.User.current();
-                if (currentUser) {
-                    console.log('Informações do usuário logado:', currentUser.toJSON());
-                    criarSupermercado(currentUser);
-                } else {
-                    alert('Nenhum usuário logado.');
-                }
-            } catch (error) {
-                console.error('Erro ao verificar o usuário:', error);
-                alert('Erro ao verificar o usuário.');
             }
         }
 
@@ -127,12 +116,12 @@
 
                 const Supermercado = Parse.Object.extend("Supermercado");
                 const query = new Parse.Query(Supermercado);
-                query.equalTo("user", currentUser); // Filtrar pelo usuário atual
+                query.equalTo("user", currentUser);
 
                 const results = await query.find();
 
                 const supermercadoList = document.getElementById('supermercado-list');
-                supermercadoList.innerHTML = ''; // Limpa a lista antes de preencher
+                supermercadoList.innerHTML = '';
 
                 results.forEach(supermercado => {
                     const nome = supermercado.get('nome');
@@ -143,7 +132,7 @@
                     const supermercadoItem = document.createElement('div');
                     supermercadoItem.classList.add('supermercado-item');
                     supermercadoItem.innerHTML = `
-                        <h2>${nome}</h2>
+                        <h2><a href="./produtos.html?id=${supermercado.id}">${nome}</a></h2>
                         <p><strong>CNPJ:</strong> ${cnpj}</p>
                         <p><strong>E-mail:</strong> ${email}</p>
                         <p><strong>Endereço:</strong> ${endereco}</p>
@@ -151,7 +140,6 @@
                     supermercadoList.appendChild(supermercadoItem);
                 });
 
-                console.log("Supermercados listados:", results);
             } catch (error) {
                 console.error('Erro ao listar supermercados:', error);
                 alert('Erro ao listar supermercados.');
@@ -162,14 +150,12 @@
             try {
                 await Parse.User.logOut();
                 alert('Logout realizado com sucesso!');
-                console.log("deu certo")
-                window.location.href = '/html/login.html'; // Redireciona para a página de login
+                window.location.href = '/html/login.html';
             } catch (error) {
                 console.error('Erro ao fazer logout:', error);
                 alert('Erro ao fazer logout.');
             }
         }
-
     </script>
 </body>
 </html>

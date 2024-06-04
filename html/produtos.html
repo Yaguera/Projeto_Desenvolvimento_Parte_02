@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produtos</title>
+    <link rel="stylesheet" href="../css/produtos.css">
+    <script type="text/javascript" src="https://npmcdn.com/parse/dist/parse.min.js"></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="./supermercados.html"><img src="../images/logo.png" alt="Logo do Site" style="height: 60px;"></a></li>
+                <li><a href=""><img id="logout"  src="../images/logout-svgrepo-com.svg" alt="logout"></a></li>
+            </ul>
+        </nav>
+    </header>
+    <section class="section">
+        <div class="box box1">
+            <div class="box-content">
+                <h1 class="box-content">Produtos Cadastrados</h1>
+                <div id="product-list">
+                    <!-- Produtos cadastrados aparecerão aqui -->
+                </div>
+            </div>
+        </div>
+        <div class="box box2">
+            <div class="box-content">
+                <h1 class="box-content">Cadastro de Produtos</h1>
+                <form id="product-form">
+                    <label class="box-content" for="nome">Nome:</label>
+                    <input type="text" id="nome" name="nome" required>
+                    
+                    <label class="box-content" for="validade">Data de Validade:</label>
+                    <input type="date" id="validade" name="validade" required>
+                    
+                    <label class="box-content" for="quantidade">Quantidade:</label>
+                    <input type="number" id="quantidade" name="quantidade" required>
+                    
+                    <label class="box-content" for="categoria">Categoria:</label><br><br><br><br>
+                    <div class="box-content categoria">
+                        <label><input type="radio" id="bebidas" name="categoria" value="Bebidas" required> Bebidas</label><br>
+                        <label><input type="radio" id="nao-perecivel" name="categoria" value="Não Perecível" required> Não Perecível</label><br>
+                        <label><input type="radio" id="perecivel" name="categoria" value="Perecível" required> Perecível</label><br>
+                        <label><input type="radio" id="enlatado" name="categoria" value="Enlatado" required> Enlatado</label>
+                    </div><br><br><br><br>
+                    
+                    <label class="box-content" for="descricao">Descrição do Produto:</label>
+                    <textarea id="descricao" name="descricao" rows="4" required></textarea>
+                    
+                    <button type="submit">Cadastrar Produto</button>
+                </form>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <p>&copy; 2024 Cozinha Solidária. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        Parse.initialize("Yqm6Dc70xMs0ZJtBQVWhfD17ZYv5QPkxabdD8W33", "1JHSAOH53z6c2i0E1uCEnHDufoRco4vvjaJ3ng66");
+        Parse.serverURL = "https://parseapi.back4app.com/";
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const supermercadoId = urlParams.get('id');
+            listarProdutos(supermercadoId);
+
+            document.getElementById('product-form').addEventListener('submit', function(event) {
+                event.preventDefault();
+                criarProduto(supermercadoId);
+            });
+
+            document.getElementById('logout').addEventListener('click', logoutUser);
+        });
+
+        async function criarProduto(supermercadoId) {
+            try {
+                const currentUser = Parse.User.current();
+                if (!currentUser) {
+                    window.location.href = '/html/login-usuario.html';
+                    return;
+                }
+
+                const nome = document.getElementById('nome').value;
+                const validade = document.getElementById('validade').value;
+                const quantidade = parseInt(document.getElementById('quantidade').value);
+                const categoriaValue = document.querySelector('input[name="categoria"]:checked').value;
+                const descricao = document.getElementById('descricao').value;
+
+                const categoria = await obterOuCriarCategoria(categoriaValue);
+
+                // Buscar o objeto Supermercado correspondente
+                const Supermercado = Parse.Object.extend("Supermercado");
+                const query = new Parse.Query(Supermercado);
+                const supermercado = await query.get(supermercadoId);
+
+                const Produto = Parse.Object.extend("Produto");
+                const produto = new Produto();
+                produto.set("user", currentUser);
+                produto.set("supermercado", supermercado); // Associar o objeto supermercado
+                produto.set("nome", nome);
+                produto.set("validade", validade);
+                produto.set("quantidade", quantidade);
+                produto.set("categoria", categoria); // Usar o ponteiro da categoria
+                produto.set("descricao", descricao);
+
+                await produto.save();
+
+                const productList = document.getElementById('product-list');
+                const productItem = document.createElement('div');
+                productItem.classList.add('product-item');
+                productItem.innerHTML = `
+                    <h2>${nome}</h2>
+                    <p><strong>Validade:</strong> ${validade}</p>
+                    <p><strong>Quantidade:</strong> ${quantidade}</p>
+                    <p><strong>Categoria:</strong> ${categoriaValue}</p>
+                    <p><strong>Descrição:</strong> ${descricao}</p>
+                `;
+                productList.appendChild(productItem);
+
+                document.getElementById('product-form').reset();
+                alert('Produto cadastrado com sucesso!');
+            } catch (error) {
+                console.error("Erro ao cadastrar produto:", error);
+                alert('Erro ao cadastrar produto.');
+            }
+        }
+
+        async function obterOuCriarCategoria(nomeCategoria) {
+            const Categoria = Parse.Object.extend("Categoria");
+            const query = new Parse.Query(Categoria);
+            query.equalTo("nome", nomeCategoria);
+            const categoria = await query.first();
+            if (categoria) {
+                return categoria;
+            } else {
+                const novaCategoria = new Categoria();
+                novaCategoria.set("nome", nomeCategoria);
+                await novaCategoria.save();
+                return novaCategoria;
+            }
+        }
+
+        async function listarProdutos(supermercadoId) {
+            try {
+                const currentUser = Parse.User.current();
+                if (!currentUser) {
+                    window.location.href = '/html/login-usuario.html';
+                    return;
+                }
+
+                const Produto = Parse.Object.extend("Produto");
+                const query = new Parse.Query(Produto);
+                query.equalTo("user", currentUser);
+                query.equalTo("supermercado", {
+                    __type: 'Pointer',
+                    className: 'Supermercado',
+                    objectId: supermercadoId
+                });
+
+                const results = await query.find();
+
+                const productList = document.getElementById('product-list');
+                productList.innerHTML = '';
+
+                results.forEach(produto => {
+                    const nome = produto.get('nome');
+                    const validade = produto.get('validade');
+                    const quantidade = produto.get('quantidade');
+                    const categoria = produto.get('categoria').get('nome');
+                    const descricao = produto.get('descricao');
+
+                    const productItem = document.createElement('div');
+                    productItem.classList.add('product-item');
+                    productItem.innerHTML = `
+                        <h2>${nome}</h2>
+                        <p><strong>Validade:</strong> ${validade}</p>
+                        <p><strong>Quantidade:</strong> ${quantidade}</p>
+                        <p><strong>Categoria:</strong> ${categoria}</p>
+                        <p><strong>Descrição:</strong> ${descricao}</p>
+                    `;
+                    productList.appendChild(productItem);
+                });
+
+            } catch (error) {
+                console.error('Erro ao listar produtos:', error);
+                alert('Erro ao listar produtos.');
+            }
+        }
+
+        async function logoutUser() {
+            try {
+                await Parse.User.logOut();
+                alert('Logout realizado com sucesso!');
+                window.location.href = '/html/login.html';
+            } catch (error) {
+                console.error('Erro ao fazer logout:', error);
+                alert('Erro ao fazer logout.');
+            }
+        }
+    </script>
+</body>
+</html>
