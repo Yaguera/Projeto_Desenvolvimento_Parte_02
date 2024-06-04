@@ -133,6 +133,15 @@ a {
     .nav-mobile ul{
         display:none;
     }
+    
+   .desktop{
+        margin-top: 150px;
+    }
+
+    .sobre{
+        margin-bottom: 80px;
+    }
+
 }
 
 
@@ -141,7 +150,7 @@ a {
     display: flex; 
     gap: 30px; 
     padding: 20px;
-    margin: 100px 0;
+    /* margin: 100px 0; */
     padding: 0 100px;
 }
 
@@ -354,7 +363,7 @@ footer > p {
     }
 
   .hero{
-        margin-top: 100px;
+        margin-top: 150px;
     }
 
     .section {
