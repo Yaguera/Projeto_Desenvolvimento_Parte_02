@@ -155,4 +155,10 @@ footer > p {
     .box {
         width: 90%;
     }
+
+    .section {
+        height: max-content;
+        flex-direction: column;
+        align-items: center;
+    }
 }
