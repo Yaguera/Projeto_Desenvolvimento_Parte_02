@@ -16,6 +16,10 @@ body {
     margin: 0;
 }
 
+.nome{
+    color: #FF7F11;
+}
+
 header {
     background-color: #FF7F11;
     width: 100%;
